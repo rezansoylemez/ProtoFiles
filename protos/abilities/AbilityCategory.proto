@@ -13,7 +13,7 @@ message AbilityLevel {
     string Name = 2;
     string Description = 3;
 
-    google.protobuf.BoolValue Code = 4;
+    string Code = 4;
     google.protobuf.BoolValue Status = 5;
     google.protobuf.BoolValue IsDeleted = 6 [default = false];
     google.protobuf.Timestamp CreatedDate = 7;

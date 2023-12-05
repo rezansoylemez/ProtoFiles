@@ -15,10 +15,10 @@ message AbilityAndAbilityLevel {
     atlas.rpc.Identifier AbilityId = 2 [(grom.field).tag = {type: "string"}];
     atlas.rpc.Identifier AbilityLevelId = 3 [(grom.field).tag = {type: "string"}];
 
-    Ability Ability = 3; 
-    AbilityLevel AbilityLevel = 4; 
+     Ability Ability = 3; 
+     AbilityLevel AbilityLevel = 4; 
 
-    google.protobuf.BoolValue Code = 5;
+    string Code = 5;
     google.protobuf.BoolValue Status = 6;
     google.protobuf.BoolValue IsDeleted = 7 [default = false];
     google.protobuf.Timestamp CreatedDate = 8;

@@ -17,7 +17,7 @@ message AbilityDetail {
     atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
 
     atlas.rpc.Identifier AbilityId = 2 [(grom.field).tag = {type: "string"}];
-    Ability Ability = 3;  
+     Ability Ability = 3;  
     string Name = 4;
     string Description = 5;
     double CoolDown = 6;
@@ -26,7 +26,7 @@ message AbilityDetail {
     double Radius = 9;
     double EnergyCost = 10;
 
-    google.protobuf.BoolValue Code = 11;
+    string Code = 11;
     google.protobuf.BoolValue Status = 12;
     google.protobuf.BoolValue IsDeleted = 13 [default = false];
     google.protobuf.Timestamp CreatedDate = 14;

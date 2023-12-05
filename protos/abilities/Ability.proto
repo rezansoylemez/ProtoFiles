@@ -35,19 +35,20 @@ message Abilities {
     string Description = 6;
     string IconUrl = 7;
 
-    AbilityDetail AbilityDetail = 8; 
-    Hero Hero = 9;
-    AbilityDamageType AbilityDamageType = 10;  
-    AbilityTargetType AbilityTargetType = 11;  
-    AbilityType AbilityType = 12;  
-    EffectType EffectType = 13;  
+     AbilityDetail AbilityDetail = 8; 
+     Hero Hero = 9;
+     AbilityDamageType AbilityDamageType = 10;  
+     AbilityTargetType AbilityTargetType = 11;  
+     AbilityType AbilityType = 12;  
+     EffectType EffectType = 13;  
 
     repeated AbilityAndAbilityCategory AbilityAndAbilityCategories = 14;
     repeated AbilityAndAbilityLevel AbilityAndAbilityLevels = 15;
     repeated AbilityAndAbilityCombo AbilityAndAbilityCombos = 16;
     repeated AbilityEffectStat AbilityEffectStats = 17;
 
-    google.protobuf.BoolValue Code = 18;
+    string Code = 18;
+
     google.protobuf.BoolValue Status = 19;
     google.protobuf.BoolValue IsDeleted = 20 [default = false];
     google.protobuf.Timestamp CreatedDate = 21;

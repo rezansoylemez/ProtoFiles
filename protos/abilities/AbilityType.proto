@@ -20,7 +20,7 @@ message AbilityType {
     bool IsActive = 8;
     bool IsUltimate = 9;
 
-    google.protobuf.BoolValue Code = 10;
+    string Code = 10;
     google.protobuf.BoolValue Status = 11;
     google.protobuf.BoolValue IsDeleted = 12 [default = false];
     google.protobuf.Timestamp CreatedDate = 13;
