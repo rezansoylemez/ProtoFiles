@@ -10,7 +10,7 @@ import "atlas/rpc/identifier.proto";
 
 import "protos/bards/BardAndEloRank.proto";
 
-message eloranks( {
+message EloRanks( {
   option (gorm.opts) = {
       ormable: true,
       multi_account: true

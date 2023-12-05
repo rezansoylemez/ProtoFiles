@@ -20,7 +20,7 @@ import "protos/bards/BardAndEloRank.proto";
 import "protos/bards/BardAndMatchesRate.proto";
 import "protos/bards/BardCreditPurchasedHistory.proto";
 
-message bards( {
+message Bards( {
   option (gorm.opts) = {
       ormable: true,
       multi_account: true
@@ -65,7 +65,6 @@ message User {
 message BardIcon {
     atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
 }
-
 
 
 message BardExperiencePoint {

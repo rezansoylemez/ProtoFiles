@@ -12,7 +12,7 @@ import "protos/bards/Bard.proto";
 import "protos/bards/EloRank.proto";
 
 
-message bardandeloranks( {
+message BardAndEloRanks( {
   option (gorm.opts) = {
       ormable: true,
       multi_account: true

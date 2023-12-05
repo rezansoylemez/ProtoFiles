@@ -10,7 +10,7 @@ import "atlas/rpc/identifier.proto";
 
 import "protos/bards/Bard.proto";
 
-message bardicons( {
+message BardIcons( {
   option (gorm.opts) = {
       ormable: true,
       multi_account: true
