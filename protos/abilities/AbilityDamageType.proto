@@ -12,13 +12,13 @@ message AbilityDamageType {
     atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}]
 
     atlas.rpc.Identifier AbilityId = 1 [(grom.field).tag = {type: "string"}];   
-    Ability Ability = 2; 
+    repeated Ability Ability = 2; 
     string Name = 3;
     string Description = 4;
     string Icon = 5;
     string Color = 6;
 
-    google.protobuf.BoolValue Code = 7;
+    string Code = 7;
     google.protobuf.BoolValue Status = 8;
     google.protobuf.BoolValue IsDeleted = 9 [default = false];
     google.protobuf.Timestamp CreatedDate = 10;

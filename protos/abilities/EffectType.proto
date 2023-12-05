@@ -11,7 +11,7 @@ import "protos/abilities/Ability.proto";
 message EffectType {
     atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
     atlas.rpc.Identifier AbilityId = 1 [(grom.field).tag = {type: "string"}];
-    Ability Ability = 2; 
+     Ability Ability = 2; 
     string Name = 3;
     string Description = 4;
     string Icon = 5;
@@ -19,7 +19,7 @@ message EffectType {
     bool IsPositive = 7;
     bool IsNegative = 8;
 
-    google.protobuf.BoolValue Code = 6;
+    string Code = 6;
     google.protobuf.BoolValue Status = 7;
     google.protobuf.BoolValue IsDeleted = 8 [default = false];
     google.protobuf.Timestamp CreatedDate = 9;

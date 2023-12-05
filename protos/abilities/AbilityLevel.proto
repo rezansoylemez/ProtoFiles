@@ -16,7 +16,7 @@ message AbilityLevel {
     double EnergyCost = 6;
     string IconUrl = 7;
 
-    google.protobuf.BoolValue Code = 8;
+    string Code = 8;
     google.protobuf.BoolValue Status = 9;
     google.protobuf.BoolValue IsDeleted = 10 [default = false];
     google.protobuf.Timestamp CreatedDate = 11;

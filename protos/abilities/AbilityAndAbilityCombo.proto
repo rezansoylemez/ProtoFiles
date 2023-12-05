@@ -15,10 +15,10 @@ message AbilityAndAbilityCombo {
     atlas.rpc.Identifier AbilityId = 2 [(grom.field).tag = {type: "string"}];
     atlas.rpc.Identifier AbilityComboId = 3 [(grom.field).tag = {type: "string"}];
 
-    Ability Ability = 4; 
-    AbilityCombo AbilityCombo = 5;
+     Ability Ability = 4; 
+     AbilityCombo AbilityCombo = 5;
 
-    google.protobuf.BoolValue Code = 6;
+    string Code = 6;
     google.protobuf.BoolValue Status = 7;
     google.protobuf.BoolValue IsDeleted = 8 [default = false];
     google.protobuf.Timestamp CreatedDate = 9;
