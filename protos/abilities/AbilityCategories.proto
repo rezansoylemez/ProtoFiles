@@ -12,7 +12,7 @@ option (grom.opts) = {
     multi_account: true
 };
 
-message Abilities {
+message AbilityCategories {
    string category_id = 1 [(grom.field).tag = {type: "uuid", primary_key: true}]; 
      
    repeated Abilities abilities = 2 
