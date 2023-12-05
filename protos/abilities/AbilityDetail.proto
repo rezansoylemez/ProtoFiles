@@ -1,11 +1,12 @@
-syntax="proto2"
-
 syntax = "proto3";
 
 package atlas.rpc;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/abilities/Ability.proto";  
 
 option (grom.opts) = {
     ormable: true,
@@ -13,14 +14,26 @@ option (grom.opts) = {
 };
 
 message AbilityDetail {
-    string detail_id = 1 [(grom.field).tag = {type: "string", primary_key: true}]; 
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
 
-    string ability_id = 2 
-    [
-        (grom.field).tag =
-        {   
-            type: "string", 
-            foreign_key: "AbilityDetail.id"
-        }
-    ];
+    atlas.rpc.Identifier AbilityId = 2 [(grom.field).tag = {type: "string"}];
+    Ability Ability = 3;  
+    string Name = 4;
+    string Description = 5;
+    double CoolDown = 6;
+    double Percent = 7;
+    double Range = 8;
+    double Radius = 9;
+    double EnergyCost = 10;
+
+    google.protobuf.BoolValue Code = 11;
+    google.protobuf.BoolValue Status = 12;
+    google.protobuf.BoolValue IsDeleted = 13 [default = false];
+    google.protobuf.Timestamp CreatedDate = 14;
+    google.protobuf.Timestamp CreatedDate = 15;
+    google.protobuf.Timestamp UpdatedDate = 16; 
+}
+
+message Ability {
+    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
 }

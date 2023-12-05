@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+message AbilityLevel {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    LevelNumber LevelNumber = 2;  
+    string Description = 3;
+    double Duration = 4;
+    double Range = 5;
+    double EnergyCost = 6;
+    string IconUrl = 7;
+
+    google.protobuf.BoolValue Code = 8;
+    google.protobuf.BoolValue Status = 9;
+    google.protobuf.BoolValue IsDeleted = 10 [default = false];
+    google.protobuf.Timestamp CreatedDate = 11;
+    google.protobuf.Timestamp CreatedDate = 12;
+    google.protobuf.Timestamp UpdatedDate = 13; 
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/abilities/Ability.proto";        
+
+message AbilityDamageType {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}]
+
+    atlas.rpc.Identifier AbilityId = 1 [(grom.field).tag = {type: "string"}];   
+    Ability Ability = 2; 
+    string Name = 3;
+    string Description = 4;
+    string Icon = 5;
+    string Color = 6;
+
+    google.protobuf.BoolValue Code = 7;
+    google.protobuf.BoolValue Status = 8;
+    google.protobuf.BoolValue IsDeleted = 9 [default = false];
+    google.protobuf.Timestamp CreatedDate = 10;
+    google.protobuf.Timestamp CreatedDate = 11;
+    google.protobuf.Timestamp UpdatedDate = 12; 
+}
+
+message Ability {
+    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
+}
