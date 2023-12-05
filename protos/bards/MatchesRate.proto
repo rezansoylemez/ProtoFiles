@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpMatchesRatesServer";
+
+package matchesrate;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/bards/BardAndMatchesRate.proto";
+
+message matchesrates( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string name = 2;
+  required string totalrate = 3;
+  required string winrate = 4;
+  required string lostrate = 5;
+
+  repeated BardAndMatchesRate BardAndMatchesRates = 6;
+
+  optional string Code = 7;
+  google.protobuf.BoolValue Status = 8;
+  google.protobuf.BoolValue IsDeleted = 9 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 10;
+  google.protobuf.Timestamp UpdatedDate = 11;
+  google.protobuf.Timestamp DeletedDate = 12;
+}
+
+message BardAndMatchesRate {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier MatchesRateId = 1 [(grom.field).tag = {type: "string"}];
+}

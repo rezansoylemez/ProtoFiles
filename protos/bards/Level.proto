@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpLevelServer";
+
+package level;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/bards/BardAndLevel.proto";
+
+message levels( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string Name = 2;
+  required string Description = 3;
+  required string LevelQuantity = 4;
+  required string StartedExperiencePoint = 5;
+  required string RequiredExperiencePoint = 6;
+  required string NextLevel = 7;
+
+  repeated BardAndLevel BardAndLevels = 8;
+
+  optional string Code = 9;
+  google.protobuf.BoolValue Status = 10;
+  google.protobuf.BoolValue IsDeleted = 11 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 12;
+  google.protobuf.Timestamp UpdatedDate = 13;
+  google.protobuf.Timestamp DeletedDate = 14;
+}
+
+message BardAndLevel {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier LevelId = 1 [(grom.field).tag = {type: "string"}];
+}

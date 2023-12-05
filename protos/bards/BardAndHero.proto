@@ -1,0 +1,40 @@
+syntax = "proto2";
+
+option csharp_namespace = "grpcBardAndHeroServer";
+
+package bardandhero;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/bards/Bard.proto";
+import "protos/bards/Hero.proto";
+
+message bardandheros( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  atlas.rpc.Identifier BardId = 2 [(grom.field).tag = {type: "string", foreign_key: "Bard.id"}];
+  atlas.rpc.Identifier HeroId = 3 [(grom.field).tag = {type: "string", foreign_key: "Hero.id"}];
+
+  Bard Bard = 4;
+  Hero Hero = 5;
+
+  optional string Code = 6;
+  google.protobuf.BoolValue Status = 7;
+  google.protobuf.BoolValue IsDeleted = 8 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 9;
+  google.protobuf.Timestamp UpdatedDate = 10;
+  google.protobuf.Timestamp DeletedDate = 11;
+}
+
+message Bard {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+message Hero {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
+}

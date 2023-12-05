@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpBardIconServer";
+
+package bardicon;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/bards/Bard.proto";
+
+message bardicons( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string Name = 2;
+  required string Description = 3;
+  required string IconUrl = 4;
+
+  repeated Bard Bards = 5;
+
+  optional string Code = 6;
+  google.protobuf.BoolValue Status = 7;
+  google.protobuf.BoolValue IsDeleted = 8 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 9;
+  google.protobuf.Timestamp UpdatedDate = 10;
+  google.protobuf.Timestamp DeletedDate = 11;
+}
+
+message Bard {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier BardIconId = 1 [(grom.field).tag = {type: "string"}];
+}

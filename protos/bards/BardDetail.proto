@@ -1,0 +1,48 @@
+syntax = "proto2";
+
+option csharp_namespace = "grpcBardDetailServer";
+
+package barddetail;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/bards/Bard.proto";
+
+message barddetails( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  atlas.rpc.Identifier BardId = 2 [(grom.field).tag = {type: "string", foreign_key: "Bard.id"}];
+  required string BackGroundUrl = 3;
+  required string Level = 4;
+  required string LevelScore = 5;
+  required string Xp = 6;
+  required string ContribitionPoint = 7;
+  required string Credit = 8;
+  required string GameCredit = 9;
+  required string GameMatchQuantity = 10;
+  required string GamePlayHour = 11;
+  required string EloRank = 12;
+  required string WonQuantity = 13;
+  required string LostQuantity = 14;
+  google.protobuf.BoolValue IsOnline = 15;
+  google.protobuf.BoolValue IsInGame = 16;
+  optional string LoggedDate = 17;
+
+  Bard Bard = 18;
+
+  optional string Code = 19;
+  google.protobuf.BoolValue Status = 20;
+  google.protobuf.BoolValue IsDeleted = 21 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 22;
+  google.protobuf.Timestamp UpdatedDate = 23;
+  google.protobuf.Timestamp DeletedDate = 24;
+}
+
+message Bard {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
+}
