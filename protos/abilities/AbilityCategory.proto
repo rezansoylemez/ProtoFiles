@@ -19,4 +19,5 @@ message AbilityLevel {
     google.protobuf.Timestamp CreatedDate = 7;
     google.protobuf.Timestamp CreatedDate = 8;
     google.protobuf.Timestamp UpdatedDate = 9; 
+    
 }
