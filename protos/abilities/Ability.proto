@@ -2,21 +2,9 @@ syntax = "proto3";
 
 package atlas.rpc;
 
-import "google/protobuf/timestamp.proto";
-import "google/protobuf/wrappers.proto";
-import "atlas/rpc/identifier.proto"; 
-
-import "protos/abilities/AbilityDetail.proto";
-import "protos/abilities/Hero.proto";  
-import "protos/abilities/AbilityDamageType.proto"; 
-import "protos/abilities/AbilityTargetType.proto";  
-import "protos/abilities/AbilityType.proto";  
-import "protos/abilities/EffectType.proto";  
-
-import "protos/abilities/AbilityAndAbilityCategory.proto"; 
-import "protos/abilities/AbilityAndAbilityLevel.proto";
-import "protos/abilities/AbilityAndAbilityCombo.proto";
-import "protos/abilities/AbilityEffectStat.proto";
+protos/abilities/Ability.proto
+protos/abilities/AbilityCategories.proto
+protos/abilities/AbilityDetail.proto
 
 
 
