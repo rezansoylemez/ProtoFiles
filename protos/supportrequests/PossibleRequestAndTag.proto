@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "atlas/rpc/identifier.proto";  // Identifier mesajını projenize göre uygun şekilde import edin.
+import "path/to/possible_request.proto";  // PossibleRequest mesajını projenize göre uygun şekilde import edin.
+import "path/to/tag.proto";  // Tag mesajını projenize göre uygun şekilde import edin.
+
+message PossibleRequestAndTag {
+
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+    atlas.rpc.Identifier PossibleRequestId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier TagId = 2 [(grom.field).tag = {type: "string"}];
+    
+    PossibleRequest PossibleRequest = 3;
+    Tag tag = 4;
+
+    string Code = 5;
+
+    google.protobuf.BoolValue Status = 6;
+    google.protobuf.BoolValue IsDeleted = 7 [default = false];
+    google.protobuf.Timestamp CreatedDate = 8;
+    google.protobuf.Timestamp CreatedDate = 9;
+    google.protobuf.Timestamp UpdatedDate = 10; 
+}

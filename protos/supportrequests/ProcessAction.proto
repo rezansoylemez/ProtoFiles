@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "path/to/support_request_and_process_action.proto";  
+
+message SupportRequestCategory {
+
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    string Name = 2;
+    repeated SupportRequestAndProcessAction SupportRequestAndProcessActions = 3;
+
+    string Code = 4;
+    google.protobuf.BoolValue Status = 5;
+    google.protobuf.BoolValue IsDeleted = 6 [default = false];
+    google.protobuf.Timestamp CreatedDate = 7;
+    google.protobuf.Timestamp CreatedDate = 8;
+    google.protobuf.Timestamp UpdatedDate = 9; 
+}
