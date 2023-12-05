@@ -27,7 +27,22 @@ message Abilities {
     google.protobuf.Timestamp created_at = 12;
     google.protobuf.Timestamp deleted_at = 13;
 
-    repeated AbilityDetail ability_details = 14;
+    repeated AbilityDetail ability_details = 14 
+    [
+        (grom.field).tag = 
+        {
+            type: "uuid",
+            foreign_key: "Abilities.id"
+        }
+    ];
 
+    string category_id = 15
+    [
+        (grom.field).tag = 
+        {
+           type: "string", 
+           foreign_key: "AbilityCategory.category_id"
+        }
+    ];
 }
 

@@ -13,6 +13,14 @@ option (grom.opts) = {
 };
 
 message AbilityDetail {
-    string detail_id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
-    string ability_id = 2 [(grom.field).tag = {type: "string", foreign_key: "Abilities.id"}];
+    string detail_id = 1 [(grom.field).tag = {type: "string", primary_key: true}]; 
+
+    string ability_id = 2 
+    [
+        (grom.field).tag =
+        {   
+            type: "string", 
+            foreign_key: "AbilityDetail.id"
+        }
+    ];
 }
