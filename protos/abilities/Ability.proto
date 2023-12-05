@@ -1,3 +1,94 @@
 
 
 
+syntax = "proto3";
+
+package atlas.rpc;
+
+protos/abilities/Ability.proto
+protos/abilities/AbilityCategories.proto
+protos/abilities/AbilityDetail.proto
+
+
+
+option (grom.opts) = {
+    ormable: true,
+    multi_account: true
+};
+
+message Abilities {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    atlas.rpc.Identifier HeroId = 2 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier AbilityLevelId = 3 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier AbilityComboId = 4 [(grom.field).tag = {type: "string"}];
+    string Name = 5;
+    string Description = 6;
+    string IconUrl = 7;
+
+    AbilityDetail AbilityDetail = 8; 
+    Hero Hero = 9;
+    AbilityDamageType AbilityDamageType = 10;  
+    AbilityTargetType AbilityTargetType = 11;  
+    AbilityType AbilityType = 12;  
+    EffectType EffectType = 13;  
+
+    repeated AbilityAndAbilityCategory AbilityAndAbilityCategories = 14;
+    repeated AbilityAndAbilityLevel AbilityAndAbilityLevels = 15;
+    repeated AbilityAndAbilityCombo AbilityAndAbilityCombos = 16;
+    repeated AbilityEffectStat AbilityEffectStats = 17;
+
+    google.protobuf.BoolValue Code = 18;
+    google.protobuf.BoolValue Status = 19;
+    google.protobuf.BoolValue IsDeleted = 20 [default = false];
+    google.protobuf.Timestamp CreatedDate = 21;
+    google.protobuf.Timestamp CreatedDate = 22;
+    google.protobuf.Timestamp UpdatedDate = 23; 
+}
+
+
+
+message AbilityDetail {
+    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+message Hero {
+    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+message AbilityDamageType {
+    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+message AbilityTargetType {
+    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+message AbilityType {
+    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+message EffectType {
+    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+message AbilityAndAbilityCategory {
+
+    atlas.rpc.Identifier ability_id = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier category_id = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message AbilityAndAbilityLevel {
+    atlas.rpc.Identifier ability_id = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier abilitylevel_id = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message AbilityAndAbilityCombo {
+    atlas.rpc.Identifier ability_id = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier abilitycombo_id = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message AbilityEffectStat {
+    atlas.rpc.Identifier ability_id = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier abilityeffectstat_id = 2 [(grom.field).tag = {type: "string"}];
+}
