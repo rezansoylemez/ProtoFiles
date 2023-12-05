@@ -11,7 +11,7 @@ import "atlas/rpc/identifier.proto";
 import "protos/bards/Bard.proto";
 import "protos/bards/Level.proto";
 
-message bardandlevels( {
+message BardAndLevels( {
   option (gorm.opts) = {
       ormable: true,
       multi_account: true

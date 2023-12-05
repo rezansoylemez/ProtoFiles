@@ -11,7 +11,7 @@ import "atlas/rpc/identifier.proto";
 import "protos/bards/Bard.proto";
 import "protos/bards/Skin.proto";
 
-message bardandskins( {
+message BardAndSkins( {
   option (gorm.opts) = {
       ormable: true,
       multi_account: true

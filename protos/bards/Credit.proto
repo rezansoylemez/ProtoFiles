@@ -10,7 +10,7 @@ import "atlas/rpc/identifier.proto";
 
 import "protos/bards/Bard.proto";
 
-message credits( {
+message Credits( {
   option (gorm.opts) = {
       ormable: true,
       multi_account: true

@@ -11,7 +11,7 @@ import "atlas/rpc/identifier.proto";
 import "protos/abilities/Bard.proto";
 import "protos/abilities/MatchesRate.proto";
 
-message bardandmatchesrates( {
+message BardAndMatchesRates( {
   option (gorm.opts) = {
       ormable: true,
       multi_account: true
