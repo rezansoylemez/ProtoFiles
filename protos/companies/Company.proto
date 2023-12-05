@@ -26,4 +26,5 @@ message Company {
     google.protobuf.Timestamp CreatedDate = 8;
     google.protobuf.Timestamp CreatedDate = 9;
     google.protobuf.Timestamp UpdatedDate = 10; 
+    
 }
