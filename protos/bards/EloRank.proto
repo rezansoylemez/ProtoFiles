@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpEloRankServer";
+
+package elorank;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/bards/BardAndEloRank.proto";
+
+message eloranks( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string Name = 2;
+  required string Description = 3;
+  required string EloRankPoint = 4;
+  required string RequiredEloRankPoint = 5;
+  required string EarnedPoint = 6;
+  required string LostPoint = 7;
+  required string NextEloRank = 8;
+  required string PlayerRanks = 9;
+  required string PlayerRankRows = 10;
+
+  repeated BardAndEloRank BardAndEloRanks = 11;
+
+  optional string Code = 12;
+  google.protobuf.BoolValue Status = 13;
+  google.protobuf.BoolValue IsDeleted = 14 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 15;
+  google.protobuf.Timestamp UpdatedDate = 16;
+  google.protobuf.Timestamp DeletedDate = 17;
+}
+
+message BardAndEloRank {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier EloRankId = 2 [(grom.field).tag = {type: "string"}];
+}

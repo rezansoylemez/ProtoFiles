@@ -1,0 +1,110 @@
+syntax = "proto2";
+
+option csharp_namespace = "grpcBardServer";
+
+package bard;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/bards/BardDetail.proto";
+import "protos/bards/User.proto";
+import "protos/bards/BardIcon.proto";
+import "protos/bards/BardExperiencePoint.proto";
+import "protos/bards/ContributionPoint.proto";
+import "protos/bards/GamCredit.proto";
+import "protos/bards/BardAndHero.proto";
+import "protos/bards/BardAndLevel.proto";
+import "protos/bards/BardAndEloRank.proto";
+import "protos/bards/BardAndMatchesRate.proto";
+import "protos/bards/BardCreditPurchasedHistory.proto";
+
+message bards( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "string" primary_key: true}];
+  atlas.rpc.Identifier UserId = 2 [(gorm.field).tag = {type: "string", foreign_key: "User.id"}];
+  atlas.rpc.Identifier BarDetailId = 3 [(gorm.field).tag = {type: "string", foreign_key: "BardDetail.id"}];
+  atlas.rpc.Identifier BardIconId = 4 [(gorm.field).tag = {type: "string", foreign_key: "BardIcon.id"}];
+  required string NickName = 5;
+  required string IconUrl = 6;
+  required string Email = 7;
+
+  BardDetail BardDetail = 8;
+  User User = 9;
+  BardIcon BardIcon = 10;
+
+  repeated BardExperiencePoint BardExperiencePointoints = 11;
+  repeated ContributionPoint ContribitionPoints = 12;
+  repeated GamCredit GamCredits = 13;
+  repeated BardAndHero BardAndHeros = 14;
+  repeated BardAndLevel BardAndLevels = 15;
+  repeated BardAndEloRank BardAndEloRanks = 16;
+  repeated BardAndMatchesRate BardAndMatchesRates = 17;
+  repeated BardCreditPurchasedHistory BardCreditPurchasedHistories = 18;
+
+  optional string Code = 19;
+  google.protobuf.BoolValue Status = 20;
+  google.protobuf.BoolValue IsDeleted = 21 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 22;
+  google.protobuf.Timestamp UpdatedDate = 23;
+  google.protobuf.Timestamp DeletedDate = 24;
+}
+
+message BardDetail {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+message User {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+message BardIcon {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
+}
+
+
+
+message BardExperiencePoint {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier BardExperiencePointId = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message ContributionPoint {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier ContributionPointId = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message GamCredit {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier GamCreditId = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message BardAndHero {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier HeroId = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message BardAndLevel {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier LevelId = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message BardAndEloRank {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier EloRankId = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message BardAndMatchesRate {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier MatchesRateId = 2 [(grom.field).tag = {type: "string"}];
+}
+
+message BardCreditPurchasedHistory {
+    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier BardCreditPurchasedHistoryId = 2 [(grom.field).tag = {type: "string"}];
+}
+
