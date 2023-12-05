@@ -1,6 +1,4 @@
-syntax="proto2"
-
-syntax = "proto3";
+syntax = "proto2";
 
 package atlas.rpc;
 
