@@ -1,0 +1,33 @@
+syntax="proto2"
+
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+option (grom.opts) = {
+    ormable: true,
+    multi_account: true
+};
+
+message Abilities {
+    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+    atlas.rpc.Identifier hero_id = 2;
+    atlas.rpc.Identifier ability_level_id = 3;
+    atlas.rpc.Identifier ability_combo_id = 4;
+    required string name = 5;
+    required string description = 6;
+    required string iconurl = 7;
+    required string code = 8;
+    google.protobuf.BoolValue status = 9;
+    google.protobuf.BoolValue is_deleted = 10 [default = false];
+    google.protobuf.Timestamp updated_at = 11;
+    google.protobuf.Timestamp created_at = 12;
+    google.protobuf.Timestamp deleted_at = 13;
+
+    repeated AbilityDetail ability_details = 14;
+
+}
+

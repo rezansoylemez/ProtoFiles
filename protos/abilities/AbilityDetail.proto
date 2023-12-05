@@ -1,0 +1,18 @@
+syntax="proto2"
+
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+option (grom.opts) = {
+    ormable: true,
+    multi_account: true
+};
+
+message AbilityDetail {
+    string detail_id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+    string ability_id = 2 [(grom.field).tag = {type: "string", foreign_key: "Abilities.id"}];
+}
