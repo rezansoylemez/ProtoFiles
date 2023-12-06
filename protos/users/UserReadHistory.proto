@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcUserReadHistoryServer";
+
+package userreadhistory;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/users/PossibleRequest.proto";
+
+message userreadhistory( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  optional string UserIp = 2;
+  required string PossibleRequestId = 3;
+
+  PossibleRequest PossibleRequest = 5;
+
+  optional string Code = 5;
+  google.protobuf.BoolValue Status = 6;
+  google.protobuf.BoolValue IsDeleted = 7 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 8;
+  google.protobuf.Timestamp UpdatedDate = 9;
+  google.protobuf.Timestamp DeletedDate = 10;
+}

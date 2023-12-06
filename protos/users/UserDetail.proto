@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcUserDetailServer";
+
+package userdetail;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/users/User.proto";
+import "protos/users/BannedAndUserDetail.proto";
+import "protos/users/UserDetailImageFile.proto";
+import "protos/supportrequests/SupportRequest.proto";
+import "protos/users/UserReadHistory.proto";
+import "protos/users/UserForgotPassword.proto";
+
+message userdetails( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  optional string PhoneNumber = 2;
+  optional string Address = 3;
+  optional bool IsOnline = 4;
+  optional bool IsBanned = 5;
+  optional string LoggedDate = 6;
+  optional string LogoutedDate = 7;
+  atlas.rpc.Identifier UserId = 8;
+  optional string BasketId = 9;
+
+  User User = 10;
+
+  repeated BannedAndUserDetail BannedAndUserDetails = 11;
+  repeated UserDetailImageFile UserDetailImageFiles = 12;
+  repeated SupportRequest SupportRequests = 13;
+  repeated UserReadHistory UserReadHistories = 14;
+  repeated UserForgotPassword UserForgotPassword = 15;
+
+  optional string Code = 16;
+  google.protobuf.BoolValue Status = 17;
+  google.protobuf.BoolValue IsDeleted = 18 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 19;
+  google.protobuf.Timestamp UpdatedDate = 20;
+  google.protobuf.Timestamp DeletedDate = 21;
+}
