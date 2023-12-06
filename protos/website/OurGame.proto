@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/website/GameCategory.proto";
+
+message OurGame {
+
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+    string Name = 2;
+    string Description = 3;
+    string IconUrl = 4;
+    string ImageUrl = 5;
+    atlas.rpc.Identifier GameCategoryId = 6 [(grom.field).tag = {type: "string"}];
+
+    GameCategory GameCategory = 7;
+
+    string Code = 8;
+    google.protobuf.BoolValue Status = 9;
+    google.protobuf.BoolValue IsDeleted = 10 [default = false];
+    google.protobuf.Timestamp CreatedDate = 11;
+    google.protobuf.Timestamp CreatedDate = 12;
+    google.protobuf.Timestamp UpdatedDate = 13; 
+}
+
+
+
+
