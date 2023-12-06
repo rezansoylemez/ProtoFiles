@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcSkinServer";
+
+package skin;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/heros/HeroAndSkin.proto";
+
+message skins( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string Title = 2;
+  required string Description = 3;
+  required string ImageUrl = 4;
+  required string Price = 5;
+  required string PurchasedDate = 6;
+  required string ReturnedDate = 7;
+  required string Files = 8;
+  required string Bytes = 9;
+  required string FileExtension = 10;
+
+  repeated HeroAndSkin HeroAndSkins = 11;
+
+  optional string Code = 12;
+  google.protobuf.BoolValue Status = 13;
+  google.protobuf.BoolValue IsDeleted = 14 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 15;
+  google.protobuf.Timestamp UpdatedDate = 16; 
+  google.protobuf.Timestamp DeletedDate = 17;
+}

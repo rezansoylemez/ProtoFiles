@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcHeroStatServer";
+
+package herostat;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/heros/Hero.proto";
+
+message herostats( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string Endurance = 2;
+  required string EnduranceGrowthRate = 3;
+  required string Mind = 4;
+  required string MindGrowthRate = 5;
+  required string Vigour = 6;
+  required string VigourGrowthRate = 7;
+  required string PhysicalDamage = 8;
+  required string MagicalDamage = 9;
+  required string AttackSpeed = 10;
+  required string CastSpeed = 11;
+  required string CriticalChance = 12;
+  required string CriticalDamage = 13;
+  required string Health = 14;
+  required string HealthRegen = 15;
+  required string Mana = 16;
+  required string ManaRegen = 17;
+  required string PhysicalArmor = 18;
+  required string MagicArmor = 19;
+  required string LifeSteal = 20;
+  required string MoveSpeed = 21;
+
+  atlas.rpc.Identifier HeroId = 22;
+
+  Hero Hero = 23;
+
+  optional string Code = 24;
+  google.protobuf.BoolValue Status = 25;
+  google.protobuf.BoolValue IsDeleted = 26 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 27;
+  google.protobuf.Timestamp UpdatedDate = 28;
+  google.protobuf.Timestamp DeletedDate = 29;
+}

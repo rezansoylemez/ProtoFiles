@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcHeroAndSkinServer";
+
+package heroandskin;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/heros/Hero.proto";
+import "protos/heros/Skin.proto";
+
+
+message heroandskins( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  atlas.rpc.Identifier HeroId = 2;
+  atlas.rpc.Identifier SkinId = 3;
+
+  Hero Hero = 4;
+  Skin Skin = 5;
+
+  optional string Code = 6;
+  google.protobuf.BoolValue Status = 7;
+  google.protobuf.BoolValue IsDeleted = 8 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 9;
+  google.protobuf.Timestamp UpdatedDate = 10;
+  google.protobuf.Timestamp DeletedDate = 11;
+}
