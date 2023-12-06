@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/supportrequests/PossibleRequest.proto";
+import "protos/users/UserDetail.proto";
+
+message PossibleRequestReaction {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    atlas.rpc.Identifier UserDetailId = 1 [(grom.field).tag = {type: "string"}];
+    string PossibleRequestId = 2;
+    atlas.rpc.Identifier PossibleRequestId = 3 [(grom.field).tag = {type: "string"}];
+    FAQLikeType FAQLikeType = 4;  
+
+    UserDetail UserDetail = 5;
+    PossibleRequest PossibleRequest = 6;
+
+    string Code = 7;
+    google.protobuf.BoolValue Status = 8;
+    google.protobuf.BoolValue IsDeleted = 9 [default = false];
+    google.protobuf.Timestamp CreatedDate = 10;
+    google.protobuf.Timestamp CreatedDate = 11;
+    google.protobuf.Timestamp UpdatedDate = 12; 
+}

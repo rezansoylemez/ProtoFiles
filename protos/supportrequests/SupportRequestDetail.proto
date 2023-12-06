@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/supportrequests/SupportRequest.proto";
+
+
+message SupportRequestDetail {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    SupportRequestApprovalStatus SupportRequestApprovalStatus = 2;
+    string Description = 3;
+    google.protobuf.Timestamp CheckedTime = 4;
+    string CheckedUserIP = 5;
+    atlas.rpc.Identifier CheckedUserId = 6 [(grom.field).tag = {type: "string"}];
+    string CheckedUserName = 7;
+    string CheckedUserMail = 8;
+    atlas.rpc.Identifier SupportRequestId = 9 [(grom.field).tag = {type: "string"}];
+
+    SupportRequest SupportRequest = 10;
+
+    string Code = 11;
+    google.protobuf.BoolValue Status = 12;
+    google.protobuf.BoolValue IsDeleted = 13 [default = false];
+    google.protobuf.Timestamp CreatedDate = 14;
+    google.protobuf.Timestamp CreatedDate = 15;
+    google.protobuf.Timestamp UpdatedDate = 16;
+}
+
+
+
+
+
+
+
+
+
+  

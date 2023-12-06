@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/supportrequests/SupportRequestCategory.proto";
+import "protos/supportrequests/SupportRequestAndTag.proto";
+import "protos/supportrequests/SupportRequestComment.proto";
+import "protos/supportrequests/SupportRequestAndProcessAction.proto";
+import "protos/supportrequests/SupportRequestDetail.proto";
+
+
+import "protos/users/UserDetail.proto";
+import "protos/employees/Employee.proto";
+
+
+message SupportRequest {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+    string Title = 2;
+    string Comment = 3;
+    string UserIP = 4;
+    string UserEmail = 5;
+    string UserNickName = 6;
+    bool CanWriteBack = 7;
+    bool IsHaveTag = 8;
+    google.protobuf.Timestamp AssignedTime = 9;
+    SupportRequestStatusType SupportRequestStatusType = 10;
+    SupportRequestPriority SupportRequestPriority = 11;
+    atlas.rpc.Identifier SupportRequestCategoryId = 12 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier UserDetailId = 13 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier EmployeeId = 14 [(grom.field).tag = {type: "string"}];
+
+    Employee Employee = 15;
+    UserDetail UserDetail = 16;
+    SupportRequestCategory SupportRequestCategory = 17;
+    repeated SupportRequestAndTag SupportRequestAndTag = 18;
+    repeated SupportRequestComment SupportRequestAndTag = 19;
+    repeated SupportRequestAndProcessAction SupportRequestAndProcessAction = 20;
+    repeated SupportRequestDetail SupportRequestDetail = 21;
+
+    string Code = 22;
+    google.protobuf.BoolValue Status = 23;
+    google.protobuf.BoolValue IsDeleted = 24 [default = false];
+    google.protobuf.Timestamp CreatedDate = 25;
+    google.protobuf.Timestamp CreatedDate = 26;
+    google.protobuf.Timestamp UpdatedDate = 27; 
+}
