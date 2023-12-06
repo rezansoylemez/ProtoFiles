@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/Employees/Team.proto";
+import "protos/supportrequests/SupportRequest.proto";
+
+
+
+message SupportRequestCategory {
+
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    string Name = 2;
+    string Description = 3;
+    atlas.rpc.Identifier TeamId = 4 [(grom.field).tag = {type: "string"}];
+    Team team = 5;
+    repeated SupportRequest SupportRequest = 6;
+
+    string Code = 7;
+    google.protobuf.BoolValue Status = 8;
+    google.protobuf.BoolValue IsDeleted = 9 [default = false];
+    google.protobuf.Timestamp CreatedDate = 10;
+    google.protobuf.Timestamp CreatedDate = 11;
+    google.protobuf.Timestamp UpdatedDate = 12;
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,12 @@
 syntax = "proto3";
 
-import "path/to/support_request_and_process_action.proto";  
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/supportrequests/SupportRequestAndProcessAction.proto";
 
 message SupportRequestCategory {
 

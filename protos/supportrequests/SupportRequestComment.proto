@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/supportrequests/SupportRequest.proto";
+
+
+
+message SupportRequestComment {
+
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    string UserName = 2;
+    string UserRole = 3;
+    string Comment = 4;
+    bool IsEdited = 5;
+    atlas.rpc.Identifier UserId = 6 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier SupportRequestId = 7 [(grom.field).tag = {type: "string"}];
+
+    SupportRequest SupportRequest = 8;
+
+    string Code = 9;
+    google.protobuf.BoolValue Status = 10;
+    google.protobuf.BoolValue IsDeleted = 11 [default = false];
+    google.protobuf.Timestamp CreatedDate = 12;
+    google.protobuf.Timestamp CreatedDate = 13;
+    google.protobuf.Timestamp UpdatedDate = 14;
+}
+
+
+
+
+
+
+
+

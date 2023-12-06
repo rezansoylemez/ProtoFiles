@@ -1,13 +1,21 @@
 syntax = "proto3";
 
-import "atlas/rpc/identifier.proto";  
-import "path/to/employee.proto";     
-import "path/to/user_detail.proto";   
-import "path/to/support_request_category.proto"; 
-import "path/to/support_request_and_tag.proto";  
-import "path/to/support_request_comment.proto";  
-import "path/to/support_request_and_process_action.proto"; 
-import "path/to/support_request_detail.proto"; 
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/supportrequests/SupportRequestCategory.proto";
+import "protos/supportrequests/SupportRequestAndTag.proto";
+import "protos/supportrequests/SupportRequestComment.proto";
+import "protos/supportrequests/SupportRequestAndProcessAction.proto";
+import "protos/supportrequests/SupportRequestDetail.proto";
+
+
+import "protos/users/UserDetail.proto";
+import "protos/employees/Employee.proto";
+
 
 message SupportRequest {
     atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];

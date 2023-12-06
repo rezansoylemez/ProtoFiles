@@ -1,10 +1,15 @@
 syntax = "proto3";
 
-import "atlas/rpc/identifier.proto";  // Identifier mesajını projenize göre uygun şekilde import edin.
-import "path/to/user_detail.proto";  // UserDetail mesajını projenize göre uygun şekilde import edin.
-import "path/to/possible_request.proto";  // PossibleRequest mesajını projenize göre uygun şekilde import edin.
+package atlas.rpc;
 
-message UserReadHistory {
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/supportrequests/PossibleRequest.proto";
+import "protos/users/UserDetail.proto";
+
+message PossibleRequestReaction {
     atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
 
     atlas.rpc.Identifier UserDetailId = 1 [(grom.field).tag = {type: "string"}];

@@ -1,5 +1,14 @@
 syntax = "proto3";
 
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto"; 
+
+import "protos/supportrequests/SupportRequestCategory.proto";
+import "protos/supportrequests/PossibleRequestAndTag.proto";
+import "protos/user/UserReadHistory.proto";
 
 
 message PossibleRequest {
