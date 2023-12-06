@@ -19,7 +19,7 @@ message userreadhistory( {
   optional string UserIp = 2;
   required string PossibleRequestId = 3;
 
-  PossibleRequest PossibleRequest = 5;
+  PossibleRequest PossibleRequest = 4;
 
   optional string Code = 5;
   google.protobuf.BoolValue Status = 6;
