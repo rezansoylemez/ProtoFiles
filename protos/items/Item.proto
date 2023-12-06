@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcItemServer";
+
+package item;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+
+message items( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string Name = 2;
+  required string Description = 3;
+  required string BuyCost = 4;
+  required string SellPrice = 5;
+  required string IconUrl = 6;
+  required string QualityType = 7;
+  optional string ItemCategory = 8;
+  required string ItemType = 9;
+  required string ItemHeroType = 10;
+  required string OperatorType = 11;
+  required string HowManyPassive = 12;
+  required string HowManyStat = 13;
+  optional bool IsStackable = 14;
+  optional bool IsConsumable = 15;
+  optional bool IsGlpyh = 16;
+  google.protobuf.BoolValue IsHaveEffect = 17;
+
+  optional string Code = 18;
+  google.protobuf.BoolValue Status = 19;
+  google.protobuf.BoolValue IsDeleted = 20 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 21;
+  google.protobuf.Timestamp UpdatedDate = 22;
+  google.protobuf.Timestamp DeletedDate = 23;
+}

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcItemSetStatServer";
+
+package itemsetstat;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+message itemsetstats( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  optional string Aura = 2;
+  optional string Armor = 3;
+  optional string Attack = 4;
+  optional string AttackSpeed = 5;
+  required string ItemSetId = 6;
+  
+  optional string Code = 7;
+  google.protobuf.BoolValue Status = 8;
+  google.protobuf.BoolValue IsDeleted = 9 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 10;
+  google.protobuf.Timestamp UpdatedDate = 11;
+  google.protobuf.Timestamp DeletedDate = 12;
+}

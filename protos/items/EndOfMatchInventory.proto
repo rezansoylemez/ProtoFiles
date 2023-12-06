@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcEndOfMatchInventoryServer";
+
+package endofmatchinventory;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+message endofmatchinventories( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  atlas.rpc.Identifier BardId = 2;
+  required string GameId = 3;
+  atlas.rpc.Identifier TeamId = 4;
+  required string Name = 5;
+  required string Description = 6;
+  required string Slot = 7;
+  required string Credit = 8;
+
+  optional string Code = 9;
+  google.protobuf.BoolValue Status = 10;
+  google.protobuf.BoolValue IsDeleted = 11 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 12;
+  google.protobuf.Timestamp UpdateDate = 13;
+  google.protobuf.Timestamp DeletedDate = 14;
+}

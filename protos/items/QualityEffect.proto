@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcQualityEffectServer";
+
+package qualityeffect;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/items/Condition.proto";
+import "protos/items/Quality.proto";
+import "protos/items/Trigger.proto";
+
+message qualityeffects( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string TriggerId = 2;
+  required string ConditionId = 3;
+  required string QualityId = 4;
+  required string EffectType = 5;
+  required string ModifierOperation = 6;
+  required string DurationPolicy = 7;
+  required string EffectStatType = 8;
+  required string EffectName = 9;
+  required string EffectDescription = 10;
+  required string EffectTarget = 11;
+  required string Effect1 = 12;
+  optional string Duration = 13;
+  required string CoolDown = 14;
+  required string AttributesName = 15;
+
+  Condition Condition = 16;
+  Trigger Trigger = 17;
+  Quality Quality = 18;
+
+  optional string Code = 19;
+  google.protobuf.BoolValue Status = 20;
+  google.protobuf.BoolValue IsDeleted = 21 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 22;
+  google.protobuf.Timestamp UpdatedDate = 23;
+  google.protobuf.Timestamp DeletedDate = 24;
+}
