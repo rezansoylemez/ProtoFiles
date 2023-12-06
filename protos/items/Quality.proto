@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcQualityServer";
+
+package quality;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/items/Item.proto";
+import "protos/items/QualityEffect.proto";
+
+message qualities( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string Name = 2;
+  required string Description = 3;
+  required string QualityItemSetId = 4;
+  required string ItemId = 5;
+
+  Item Item = 6;
+  repeated QualityEffect QualityEffects = 7;
+
+  optional string Code = 8;
+  google.protobuf.BoolValue Status = 9;
+  google.protobuf.BoolValue IsDeleted = 10 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 11;
+  google.protobuf.Timestamp UpdatedDate = 12;
+  google.protobuf.Timestamp DeletedDate = 13;
+}

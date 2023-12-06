@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcEndOfMatchInventoryAndItemServer";
+
+package endofmatchinventoryanditem;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+
+message endofmatchinventoryanditems( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string ItemId = 2;
+  required string EndOfMatchInventoryId = 3;
+
+  optional string Code = 4;
+  google.protobuf.BoolValue Status = 5;
+  google.protobuf.BoolValue IsDeleted = 6 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 7;
+  google.protobuf.Timestamp UpdatedDate = 8;
+  google.protobuf.Timestamp DeletedDate = 9;
+}
