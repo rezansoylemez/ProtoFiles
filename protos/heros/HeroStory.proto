@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcHeroStoryServer";
+
+package herostory;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/heros/Hero.proto";
+
+message herostories( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string Name = 2;
+  required string Description = 3;
+  required string Story = 4;
+
+  atlas.rpc.Identifier HeroId = 5;
+
+  Hero Hero = 6;
+
+  optional string Code = 7;
+  google.protobuf.BoolValue Status = 8;
+  google.protobuf.BoolValue IsDeleted = 9 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 10;
+  google.protobuf.Timestamp UpdatedDate = 11;
+google.protobuf.Timestamp DeletedDate = 12;
+}

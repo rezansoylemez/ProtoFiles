@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcHeroServer";
+
+package hero;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/heros/HeroStat.proto";
+import "protos/heros/HeroDetail.proto";
+import "protos/heros/HeroAndSkin.proto";
+import "protos/abilities/BardDetail.proto";
+import "protos/bards/BardAndHero.proto";
+import "protos/heros/HeroStory.proto";
+
+message heros ( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  optional string Name = 2;
+  optional string Region = 3;
+  optional string DifficultLevel = 4;
+  optional string HeroType = 5;
+
+  HeroStat HeroStat = 6;
+  HeroDetail HeroDetail = 7;
+  
+  repeated HeroAndSkin HeroAndSkins = 8;
+  repeated Ability Abilities = 9;
+  repeated BardAndHero BardAndHeros = 10;
+  repeated HeroStory HeroStories = 11;
+
+  optional string Code = 12;
+  google.protobuf.BoolValue Status = 13;
+  google.protobuf.BoolValue IsDeleted = 14 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 15;
+  google.protobuf.Timestamp UpdatedDate = 16;
+  google.protobuf.Timestamp DeletedDate = 17;
+}
