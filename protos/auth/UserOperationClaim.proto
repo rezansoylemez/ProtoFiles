@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/users/UserOperationClaim.proto";
+import "protos/users/User.proto";
+
+message UserOperationClaim {
+
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+    
+    atlas.rpc.Identifier UserId = 2 [(grom.field).tag = {type: "string"}];
+    atlas.rpc.Identifier OperationClaimId = 3 [(grom.field).tag = {type: "string"}];
+
+    User User = 4;
+    OperationClaim OperationClaim = 5;
+
+    string Code = 6;
+    google.protobuf.BoolValue Status = 7;
+    google.protobuf.BoolValue IsDeleted = 8 [default = false];
+    google.protobuf.Timestamp CreatedDate = 9;
+    google.protobuf.Timestamp CreatedDate = 10;
+    google.protobuf.Timestamp UpdatedDate = 11; 
+}
+

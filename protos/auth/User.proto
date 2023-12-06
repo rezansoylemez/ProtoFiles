@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/users/UserOperationClaim.proto";
+import "protos/users/RefreshToken.proto";
+import "protos/users/EmailAuthenticator.proto";
+
+message User {
+
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+    string Email = 2;
+    string FirstName = 3;
+    string LastName = 4;
+    bytes PasswordSalt = 5;
+    bytes PasswordHash = 6;
+    AuthenticatorType AuthenticatorType = 7;
+    RegisterType RegisterType = 8;
+
+    repeated UserOperationClaim UserOperationClaim = 9;
+    repeated RefreshToken RefreshToken = 10;
+    repeated EmailAuthenticator EmailAuthenticator = 11;
+
+    string Code = 12;
+    google.protobuf.BoolValue Status = 13;
+    google.protobuf.BoolValue IsDeleted = 14 [default = false];
+    google.protobuf.Timestamp CreatedDate = 15;
+    google.protobuf.Timestamp CreatedDate = 16;
+    google.protobuf.Timestamp UpdatedDate = 17; 
+}

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/users/User.proto";
+
+message RefreshToken {
+
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    atlas.rpc.Identifier UserId = 2 [(grom.field).tag = {type: "string"}];
+    string Token = 3;
+    google.protobuf.Timestamp Expires = 4;
+    google.protobuf.Timestamp Created = 5;
+    string CreatedByIp = 6;
+    google.protobuf.Timestamp Revoked = 7;
+    string RevokedByIp = 8;
+    string ReplacedByToken = 9;
+    string ReasonRevoked = 10;
+
+    User User = 11;
+
+    string Code = 12;
+    google.protobuf.BoolValue Status = 13;
+    google.protobuf.BoolValue IsDeleted = 14 [default = false];
+    google.protobuf.Timestamp CreatedDate = 15;
+    google.protobuf.Timestamp CreatedDate = 16;
+    google.protobuf.Timestamp UpdatedDate = 17; 
+}
