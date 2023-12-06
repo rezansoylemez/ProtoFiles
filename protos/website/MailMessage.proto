@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+message EmailDetails {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    string To = 2;
+    string Subject = 3;
+    string Body = 4;
+    string Name = 5;
+  
+    string Code = 6;
+    google.protobuf.BoolValue Status = 7;
+    google.protobuf.BoolValue IsDeleted = 8 [default = false];
+    google.protobuf.Timestamp CreatedDate = 9;
+    google.protobuf.Timestamp CreatedDate = 10;
+    google.protobuf.Timestamp UpdatedDate = 11; 
+}
+
+
+
+
+

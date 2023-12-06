@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package atlas.rpc;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+
+message EmployeeApplication {
+    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string", primary_key: true}];
+
+    string FirstName = 2;
+    string LastName = 3;
+    string Email = 4;
+    string Phone = 5;
+    string Country = 6;
+    string City = 7;
+    string PostalCode = 8;
+    string CV_URL = 9;
+
+    string Code = 10;
+    google.protobuf.BoolValue Status = 11;
+    google.protobuf.BoolValue IsDeleted = 12 [default = false];
+    google.protobuf.Timestamp CreatedDate = 13;
+    google.protobuf.Timestamp CreatedDate = 14;
+    google.protobuf.Timestamp UpdatedDate = 15; 
+}
+
+
+
+
+
