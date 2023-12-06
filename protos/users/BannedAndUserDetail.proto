@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option csharp_namespace = "grpcBannedAndUsersDetailServer";
+
+package bannedandusersdetail;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+import "atlas/rpc/identifier.proto";
+
+import "protos/users/UserDetail.proto";
+import "protos/users/Banned.proto";
+
+
+message bannedandusersdetails ( {
+  option (gorm.opts) = {
+      ormable: true,
+      multi_account: true
+  };
+  atlas.rpc.Identifier Id = 1 [(gorm.field).tag = {type: "uuid" primary_key: true}];
+  required string UserDetailId = 2;
+  required string BannedId = 3;
+  optional string BeginingBanDate = 4;
+  optional string EndingBanDate = 5;
+
+  UserDetail UserDetail = 6;
+  Banned Banned = 7;
+  
+  optional string Code = 8;
+  google.protobuf.BoolValue Status = 9;
+  google.protobuf.BoolValue IsDeleted = 10 [default = false;];
+  google.protobuf.Timestamp CreatedDate = 11;
+  google.protobuf.Timestamp UpdatedDate = 12;
+  google.protobuf.Timestamp DeletedDate = 13;
+}
