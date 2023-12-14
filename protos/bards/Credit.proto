@@ -28,7 +28,3 @@ message Credits( {
   google.protobuf.Timestamp UpdatedDate = 9;
   google.protobuf.Timestamp DeletedDate = 10;
 }
-
-message Bard {
-    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
-}

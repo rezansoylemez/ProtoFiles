@@ -30,8 +30,3 @@ message MatchesRates( {
   google.protobuf.Timestamp UpdatedDate = 11;
   google.protobuf.Timestamp DeletedDate = 12;
 }
-
-message BardAndMatchesRate {
-    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
-    atlas.rpc.Identifier MatchesRateId = 1 [(grom.field).tag = {type: "string"}];
-}

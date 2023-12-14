@@ -27,7 +27,3 @@ message AbilityType {
     google.protobuf.Timestamp CreatedDate = 14;
     google.protobuf.Timestamp UpdatedDate = 15; 
 }
-
-message Ability {
-    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
-}

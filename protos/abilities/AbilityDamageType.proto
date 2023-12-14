@@ -25,7 +25,3 @@ message AbilityDamageType {
     google.protobuf.Timestamp CreatedDate = 11;
     google.protobuf.Timestamp UpdatedDate = 12; 
 }
-
-message Ability {
-    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
-}

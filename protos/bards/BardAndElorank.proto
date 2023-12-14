@@ -31,11 +31,3 @@ message BardAndEloRanks( {
   google.protobuf.Timestamp UpdatedDate = 10;
   google.protobuf.Timestamp DeletedDate = 11;
 }
-
-message Bard {
-    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
-}
-
-message EloRank {
-    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
-}
