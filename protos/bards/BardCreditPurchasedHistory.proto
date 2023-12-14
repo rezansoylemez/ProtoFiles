@@ -39,7 +39,3 @@ message BardCreditPurchasedHistories( {
   google.protobuf.Timestamp UpdatedDate = 20; 
   google.protobuf.Timestamp DeletedDate = 21;
 }
-
-message Bard {
-    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
-}

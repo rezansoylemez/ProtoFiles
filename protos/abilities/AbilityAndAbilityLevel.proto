@@ -25,11 +25,3 @@ message AbilityAndAbilityLevel {
     google.protobuf.Timestamp CreatedDate = 9;
     google.protobuf.Timestamp UpdatedDate = 10; 
 }
-
-message Ability {
-    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
-}
-
-message AbilityLevel {
-    atlas.rpc.Identifier id = 1 [(grom.field).tag = {type: "string"}];
-}

@@ -32,8 +32,3 @@ message Levels( {
   google.protobuf.Timestamp UpdatedDate = 13;
   google.protobuf.Timestamp DeletedDate = 14;
 }
-
-message BardAndLevel {
-    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
-    atlas.rpc.Identifier LevelId = 1 [(grom.field).tag = {type: "string"}];
-}

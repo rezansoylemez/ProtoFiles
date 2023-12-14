@@ -29,8 +29,3 @@ message BardIcons( {
   google.protobuf.Timestamp UpdatedDate = 10;
   google.protobuf.Timestamp DeletedDate = 11;
 }
-
-message Bard {
-    atlas.rpc.Identifier BardId = 1 [(grom.field).tag = {type: "string"}];
-    atlas.rpc.Identifier BardIconId = 1 [(grom.field).tag = {type: "string"}];
-}

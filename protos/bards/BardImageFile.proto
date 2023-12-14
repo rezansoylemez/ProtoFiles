@@ -25,7 +25,3 @@ message BardImageFiles( {
   optional string Path = 6;
   optional string Storage = 7;  
 }
-
-message Bard {
-    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
-}

@@ -42,7 +42,3 @@ message BardDetails( {
   google.protobuf.Timestamp UpdatedDate = 23;
   google.protobuf.Timestamp DeletedDate = 24;
 }
-
-message Bard {
-    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
-}

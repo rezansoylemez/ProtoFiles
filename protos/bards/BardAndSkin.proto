@@ -27,11 +27,3 @@ message BardAndSkins( {
   google.protobuf.Timestamp UpdatedDate = 8;
   google.protobuf.Timestamp DeletedDate = 9;
 }
-
-message Bard {
-    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
-}
-
-message Skin {
-    atlas.rpc.Identifier Id = 1 [(grom.field).tag = {type: "string"}];
-}
